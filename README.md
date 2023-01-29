@@ -1,7 +1,9 @@
 # SpringBoot-microservices-k8s
  Spring boot app with Devops
 
-Docker files
+Docker file
+
+
 docker build -t kamalrajput755/configserver:0.0.1 .
 docker build -t kamalrajput755/serviceregistry:0.0.1 .
 docker build -t kamalrajput755/cloudgateway:0.0.1 .
