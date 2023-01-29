@@ -1,0 +1,33 @@
+version: '3'
+services:
+  serviceregistry:
+    image: 'kamalrajput755/serviceregistry:0.0.1'
+    container_name: serviceregistry
+    ports:
+      - '8761:8761'
+  configserver:
+     image: 'kamalrajput755/configserver:0.0.1'
+     container_name: configserver
+     ports:
+       - '9296:9296'
+     environment:
+       - EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka
+# adding healthcheck to make sure cloud gateway starts up only when configserver is healthy
+     healthcheck:
+       test: ["CMD", "curl","-f", "http://configserver:9296/actuator/health"]
+       interval: 10s
+       timeout: 5s
+       retries: 5
+     depends_on:
+       - serviceregistry
+  cloudgateway:
+     image: 'kamalrajput755/cloudgateway:0.0.1'
+     container_name: cloudgateway
+     ports:
+       - '9090:9090'
+     environment:
+       - EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka
+       - CONFIG_SERVER_URL=host.docker.internal
+     depends_on:
+       configserver:
+         condition: service_healthy
