@@ -1,7 +1,7 @@
 # SpringBoot-microservices-k8s
  Spring boot app with Devops
 
-Docker file
+Docker file 
 
 
 docker build -t kamalrajput755/configserver:0.0.1 .
