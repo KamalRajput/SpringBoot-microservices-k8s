@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eureka-cm
+data:
+  eureka_service_address: "http://eureka-0.eureka:8761/eureka"
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-cm
+data:
+  config_url: "http://config-server-svc"
+
+# We are directly accessing the resource config-server-svc here. No need to specify the ports and all. 
+# similarly in the above configmap we are accessing the service directly as well. eureka-0 is the name for statefulset and eureka is the service name. (eureka-0.eureka)
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-cm
+data:
+  hostname: "mysql-0.mysql"
