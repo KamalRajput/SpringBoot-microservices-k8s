@@ -6,11 +6,10 @@ import com.shopping.ProductService.model.ProductRequest;
 import com.shopping.ProductService.model.ProductResponse;
 import com.shopping.ProductService.repository.ProductRepository;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static org.springframework.beans.BeanUtils.*;
+import static org.springframework.beans.BeanUtils.copyProperties;
 
 @Service
 @Log4j2
@@ -52,5 +51,14 @@ public class ProductServiceImpl implements ProductService{
         product.setQuantity(product.getQuantity()-quantity);
         productRepository.save(product);
         log.info("Product quantity updated successfully post order");
+    }
+
+    @Override
+    public long deleteProduct(long productId) {
+        log.info("Deleting product with id :{}", productId);
+        Product product = productRepository.findById(productId).
+                orElseThrow(() -> new ProductServiceCustomException("Product with given id not found","PRODUCT_NOT_FOUND"));
+        productRepository.delete(product);
+        return product.getProductId();
     }
 }

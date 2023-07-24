@@ -19,3 +19,7 @@ docker run -d -p9296:9296 -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8
 docker run -d -p9090:9090 -e CONFIG_SERVER_URL=host.docker.internal  -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name cloudgateway imageId
 
 docker run -d -p8080:9090 -e CONFIG_SERVER_URL=host.docker.internal  -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name productservice imageId
+
+
+docker run -d -p 9411:9411 openzipkin/zipkin
+docker run --name latestredis -d -p 6379:6379 redis 
