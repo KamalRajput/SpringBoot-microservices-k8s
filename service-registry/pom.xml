@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shopping</groupId>
 	<artifactId>service-registry</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>service-registry</name>
 	<description>service registry</description>
 	<properties>
@@ -50,6 +50,21 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!--JIb plugin to build and push docker image. settings.xml should have credentials for docker hub -->
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.2</version>
+				<configuration>
+					<from>
+						<image>openjdk:11</image>
+					</from>
+					<to>
+						<image>registry.hub.docker.com/kamalrajput755/serviceregistry</image>
+						<tags>${project.version}</tags>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shopping</groupId>
 	<artifactId>Config-Server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Config-Server</name>
 	<description>Order Service</description>
 	<properties>
