@@ -17,19 +17,35 @@ spring:
       name: ORDER-SERVICE
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-66844412.okta.com/oauth2/default
+      client:
+        registration:
+          internal-client:
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oaak5tkjbbxhBCUX5d7
+            client-secret: uA_kcQyEZqhVcwjjRVNIvGbwjp88VQzDneUnMj1BAhyYsE3FLT6w7G4Zom8MnNJB
+        provider:
+          okta:
+            issuer-uri: https://dev-66844412.okta.com/oauth2/default
 
 resilience4j:
   circuitbreaker:
     instances:
       external:
-        eventConsumerBufferSize: 10
-        failureRateThreshold: 50
-        minimumNumberOfCalls: 5
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowSize: 10
-        slidingWindowType: COUNT_BASED
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
 
 #eureka:
 #  instance:
