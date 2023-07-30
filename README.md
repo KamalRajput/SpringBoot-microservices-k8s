@@ -17,7 +17,7 @@ to make docker containers connect to their internal network.
 - docker run -d -p8080:9090 -e CONFIG_SERVER_URL=host.docker.internal  -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name productservice imageId
 - docker run -d -p 9411:9411 openzipkin/zipkin
 - docker run --name latestredis -d -p 6379:6379 redis 
-### command to build and pus docker images : 
+### command to build and push docker images : 
 - mvn clean install jib:build.This doesnt require docker to be installed on your machine.
 - It will create the image and push it to docker hub. If you require the image locally, you need to pull it and run accordingly.
 
