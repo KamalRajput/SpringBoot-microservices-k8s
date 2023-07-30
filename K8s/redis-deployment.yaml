@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-app
+spec:
+  selector:
+    matchLabels:
+      app: redis-app
+  template:
+    metadata:
+      labels:
+        app: redis-app
+    spec:
+      containers:
+      - name: redis-app
+        image: redis:latest
+        ports:
+        - containerPort: 6379
+        command:
+          - "redis-server"
+---
+# This service is referenced in cloud gateway to connect to redis. spring.redis.host : redis
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  selector:
+    app: redis-app
+  ports:
+  - port: 6379
+    targetPort: 6379

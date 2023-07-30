@@ -26,3 +26,16 @@ docker run --name latestredis -d -p 6379:6379 redis
 
 command to build and pus docker images : mvn clean install jib:build.This doesnt require docker to be installed on your machine.
 It will create the image and push it to docker hub. If you require the image locally, you need to pull it and run accordingly.
+
+
+----
+kubectl apply -f configmaps.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f zipkin-deployment.yaml
+kubectl apply -f redis-deployment.yaml
+kubectl apply -f service-registry-statefulset.yaml
+kubectl apply -f config-server-deployment.yaml
+kubectl apply -f cloud-gateway-deployment.yaml
+kubectl apply -f payment-service-deployment.yaml order-service-deployment.yaml product-service-deployment.yaml
+
+#Removed usage of configServer in cloudgateway as it was creating issue in connecting.

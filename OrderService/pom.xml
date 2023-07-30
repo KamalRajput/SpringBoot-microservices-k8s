@@ -112,6 +112,21 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!--JIb plugin to build and push docker image. settings.xml should have credentials for docker hub -->
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.2</version>
+				<configuration>
+					<from>
+						<image>openjdk:11</image>
+					</from>
+					<to>
+						<image>registry.hub.docker.com/kamalrajput755/orderservice</image>
+						<tags>${project.version}</tags>
+					</to>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

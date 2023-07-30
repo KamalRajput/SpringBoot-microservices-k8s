@@ -31,6 +31,7 @@ spec:
 
 ---
 # Defining a loadbalancer service if in case users want to access Zipkin dashboard from external traffic.
+# This service is referenced in config application.yml.
 
 apiVersion: v1
 kind: Service
