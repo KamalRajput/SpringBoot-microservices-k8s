@@ -1,5 +1,7 @@
-# SpringBoot-microservices-k8s
+# SpringBoot-microservices-k8s-docker including Eureka Server, Config Server, API Gateway, Services , Zipkin, Redis, Resilience4j
  Spring boot app with Devops
+
+![img_5.png](img_5.png)
 
 Docker file 
 
@@ -37,5 +39,15 @@ kubectl apply -f service-registry-statefulset.yaml
 kubectl apply -f config-server-deployment.yaml
 kubectl apply -f cloud-gateway-deployment.yaml
 kubectl apply -f payment-service-deployment.yaml order-service-deployment.yaml product-service-deployment.yaml
-
 #Removed usage of configServer in cloudgateway as it was creating issue in connecting.
+-----
+
+### Screenshots
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+![img_6.png](img_6.png)
+
+
