@@ -14,6 +14,7 @@ spec:
       containers:
       - name: order-service-app
         image: kamalrajput755/orderservice:0.0.1
+        imagePullPolicy: Always
         ports:
         - containerPort: 8082
         env:
